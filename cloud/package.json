@@ -5,6 +5,7 @@
   "dependencies" : {        
     "fh-webapp" : "*",
     "fh-api" : "*",
+    "request" : "*",
     "express" : "3.3.4"
   },
   "devDependencies":{

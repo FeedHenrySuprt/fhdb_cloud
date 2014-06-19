@@ -13,7 +13,7 @@ exports.fhdbInit = function(params, callback) {
       }
 }, function(err, data) {
   if (err) {
-    console.log("Error " + err)
+    console.log("Error " + err);
   } else {
     console.log(JSON.stringify(data));
     callback(undefined, data);
@@ -33,7 +33,7 @@ exports.fhdbAdd = function(params, callback) {
       }
 }, function(err, data) {
   if (err) {
-    console.log("Error " + err)
+    console.log("Error " + err);
   } else {
     console.log(JSON.stringify(data));
     callback(undefined, data);
@@ -44,10 +44,10 @@ exports.fhdbList = function(params, callback) {
 console.log("In dbList()");
 $fh.db({
   "act": "list",
-  "type": "fhdbExample",
+  "type": "fhdbExample"
 }, function(err, data) {
   if (err) {
-    console.log("Error " + err)
+    console.log("Error " + err);
   } else {
     console.log(JSON.stringify(data));
     callback(undefined, data);
@@ -82,6 +82,17 @@ https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhd
 https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbList
 
 */
+
+exports.reqtest = function(params, callback) {
+// Detail of this request module can be found at https://github.com/mikeal/request
+var request = require('request');
+request('https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbList', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log("Response is " + body);
+    return callback(undefined, body);
+  }
+})
+};
 
 exports.health = function(params, callback) {
   return callback(undefined, 'Everything is operating normally');
