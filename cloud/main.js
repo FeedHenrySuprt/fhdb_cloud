@@ -75,8 +75,14 @@ http://127.0.0.1:8001/cloud/fhdbDeleteall
 http://127.0.0.1:8001/cloud/fhdbList
 http://127.0.0.1:8001/cloud/fhdbAdd?firstname=jim&lastname=jones&country=Ireland&phone=123456
 http://127.0.0.1:8001/cloud/fhdbList
+
+https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbDeleteall
+https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbList
+https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbAdd?firstname=jim&lastname=jones&country=Ireland&phone=123456
+https://support-tbd8odimttbsvkhssiqdij3l-dev.df.dev.e111.feedhenry.net/cloud/fhdbList
+
 */
 
 exports.health = function(params, callback) {
-  return callback(undefined, 'Everything fine');
+  return callback(undefined, 'Everything is operating normally');
 };
