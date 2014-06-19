@@ -1,15 +1,82 @@
-var util = require('util');
-/* main.js
- * All calls here are publicly exposed as REST API endpoints.
- * - all parameters must be passed in a single JSON paramater.
- * - the return 'callback' method signature is 'callback (error, data)', where 'data' is a JSON object.
+//var util = require('util');
+
+exports.fhdbInit = function(params, callback) {
+  console.log("In dbInit()");
+  $fh.db({
+      "act" : "create",
+      "type" : "fhdbExample",
+      "fields" : {
+        "firstName" : "Jim",
+        "lastName" : "Feedhenry",
+        "country" : "Henryland",
+       "phone" : "555-123456"
+      }
+}, function(err, data) {
+  if (err) {
+    console.log("Error " + err)
+  } else {
+    console.log(JSON.stringify(data));
+    callback(undefined, data);
+  }
+})};
+
+exports.fhdbAdd = function(params, callback) {
+  console.log("In fhdbAdd()");
+  $fh.db({
+      "act" : "create",
+      "type" : "fhdbExample",
+      "fields" : {
+        "firstName" : params.firstname,
+        "lastName" : params.lastname,
+        "country" : params.country,
+       "phone" : params.phone
+      }
+}, function(err, data) {
+  if (err) {
+    console.log("Error " + err)
+  } else {
+    console.log(JSON.stringify(data));
+    callback(undefined, data);
+  }
+})};
+
+exports.fhdbList = function(params, callback) {
+console.log("In dbList()");
+$fh.db({
+  "act": "list",
+  "type": "fhdbExample",
+}, function(err, data) {
+  if (err) {
+    console.log("Error " + err)
+  } else {
+    console.log(JSON.stringify(data));
+    callback(undefined, data);
+  }
+})};
+
+exports.fhdbDeleteall = function(params, callback) {
+console.log("In Deleteall");
+$fh.db({
+  "act": "deleteall",
+  "type": "fhdbExample"
+}, function(err, data) {
+    console.log(JSON.stringify(data));
+    callback(undefined, data);  
+})};
+
+exports.paramtest = function(params, callback) {
+console.log("In paramtest");
+console.log(params);
+return callback(undefined, params);
+};
+
+/*
+http://127.0.0.1:8001/cloud/fhdbDeleteall
+http://127.0.0.1:8001/cloud/fhdbList
+http://127.0.0.1:8001/cloud/fhdbAdd?firstname=jim&lastname=jones&country=Ireland&phone=123456
+http://127.0.0.1:8001/cloud/fhdbList
 */
 
-/* 'getConfig' server side REST API method.
- * Trivial example of pulling in a shared config file.
- */
-exports.getConfig = function(params, callback) {
-  console.log("In getConfig() call");
-  var cfg = require("config.js");
-  return callback(null, {config: cfg.config});
+exports.health = function(params, callback) {
+  return callback(undefined, 'Everything fine');
 };
