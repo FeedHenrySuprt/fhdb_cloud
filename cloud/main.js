@@ -13,7 +13,7 @@ exports.fhdbInit = function(params, callback) {
       }
 }, function(err, data) {
   if (err) {
-    console.log("Error " + err)
+    console.log("Error " + err);
   } else {
     console.log(JSON.stringify(data));
     callback(undefined, data);
