@@ -1,5 +1,3 @@
-//var util = require('util');
-
 exports.fhdbInit = function(params, callback) {
   console.log("In dbInit()");
   $fh.db({
